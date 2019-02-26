@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/soroushkhosravi/projects/bookmarks/spec/features/viewing_bookmarks_spec.rb": [
+      "/Users/student/Projects/pairing/bookmark_manager_wk4/spec/features/viewing_bookmarks_spec.rb": [
         1,
         1,
         1,
@@ -14,7 +14,7 @@
         null,
         null
       ],
-      "/Users/soroushkhosravi/projects/bookmarks/spec/units/bookmark_spec.rb": [
+      "/Users/student/Projects/pairing/bookmark_manager_wk4/spec/units/bookmark_spec.rb": [
         1,
         null,
         1,
@@ -38,6 +38,6 @@
         null
       ]
     },
-    "timestamp": 1551115846
+    "timestamp": 1551189129
   }
 }
