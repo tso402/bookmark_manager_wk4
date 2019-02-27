@@ -41,3 +41,12 @@ rubocop
 # Setting up a Testing Environment
 
 Run the commands in psql from the db/migrations/01_create_bookmarks_table.sql
+
+
+# Add new bookmarks
+
+```
+As an internet user
+so that I can store pages that I want to visit
+I want to be able to add a bookmark to my list
+```
