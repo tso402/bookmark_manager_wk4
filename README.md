@@ -1,27 +1,43 @@
+# User stories
+# Bookmark Manager
 
-The requirements :
+As an internet user,
+So that I can easily return to the pages that are important to me,
+I want to be able to see the list of the pages that I've bookmarked.
 
-Show a list of bookmarks
-Add new bookmarks
-Delete bookmarks
-Update bookmarks
-Comment on bookmarks
-Tag bookmarks into categories
-Filter bookmarks by tag
-Users manage their bookmarks
+As an internet user,
+So that I can easily find it later,
+I want to be able to mark the page that I'm reading.
 
-As a user
-so that I can see a list of bookmarks
-it should display the list of bookmarks.
-<img src="Screenshot 2019-02-25 at 14.20.42.png">
+## Domain Model
+![Bookmark Manager Domain Model](snapp.jpg)
+# Bookmark_manager
+# How to use
 
+To set up the project
 
-Database Setup Intructions
-Access psql and create the new database and table
-$: psql
+Clone this repository and then run:
 
-=# CREATE DATABASE bookmark_manager;
+bundle
+To set up the database
 
-=# \c book_manager
+Connect to psql and create the bookmark_manager database:
 
-book_manager=# CREATE TABLE "bookmarks" ("id" SERIAL PRIMARY KEY, "url" VARCHAR(60));
+CREATE DATABASE bookmark_manager;
+To set up the appropriate tables, connect to the database in psql and run the SQL scripts in the db/migrations folder in the given order.
+
+To run the Bookmark Manager app:
+
+rackup -p 3000
+To view bookmarks, navigate to localhost:3000/bookmarks.
+
+To run tests:
+
+rspec
+To run linting:
+
+rubocop
+
+# Setting up a Testing Environment
+
+Run the commands in psql from the db/migrations/01_create_bookmarks_table.sql

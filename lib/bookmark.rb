@@ -1,18 +1,19 @@
 require 'pg'
+
 class Bookmark
-  @all_bookmarks ||= []
-  attr_reader :name
-  def initialize(name)
-    @name = name
-    self.class.all_bookmarks << self
+
+  def self.all
+    @bookmark_array =[]
+    if ENV['RACK_ENV'] == 'test'
+    conn = PG.connect(dbname: 'bookmark_manager_test' )
+  else
+    conn = PG.connect(dbname: 'bookmark_manager' )
   end
-  def self.all_bookmarks
-    con = PG.connect(dbname: 'bookmark_manager')
-    con.exec("SELECT * FROM bookmarks") do |result|
+    conn.exec( "SELECT * FROM bookmarks" ) do |result|
       result.each do |row|
-        @all_bookmarks << row.values_at('url')[0]
+        @bookmark_array << row.values_at('url')[0]
       end
     end
-    @all_bookmarks
+    @bookmark_array
   end
 end

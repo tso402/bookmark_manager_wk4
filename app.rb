@@ -1,10 +1,16 @@
-require "sinatra/base"
-require_relative "./lib/bookmark.rb"
+require 'sinatra/base'
+require './lib/bookmark'
 
-class BookmarkManager<Sinatra::Base
-  get "/" do
-    @bookmarks = Bookmark.all_bookmarks
-    erb :index
+class Bookmarks < Sinatra::Base
+  get '/' do
+    "Bookmark Manager!"
+  end
+
+  get '/bookmarks' do
+    # p ENV
+    @bookmarks = Bookmark.all
+
+    erb :'bookmarks/index'
   end
 
 
@@ -13,9 +19,6 @@ class BookmarkManager<Sinatra::Base
 
 
 
-
-
-
-
+  # start the server if ruby file executed directly
   run! if app_file == $0
 end

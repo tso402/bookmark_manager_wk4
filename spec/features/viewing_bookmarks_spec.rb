@@ -1,11 +1,23 @@
-feature "Shoewing bookmark term" do
-  scenario "The bookmarks term is shown when we start" do
-    visit "/"
-    expect(page).to have_content "bookmarks"
+feature "index page for bookmark manager" do
+  scenario "basic index page" do
+    visit '/'
+    expect(page).to have_content "Bookmark Manager!"
   end
+end
 
-  scenario "The makers web page is shown in bookmarks" do
-    visit"/"
+feature "viewing bookmars in /bookmarks route" do
+  scenario "show list of bookmarks" do
+
+    connection = PG.connect(dbname: 'bookmark_manager_test')
+
+    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.makersacademy.com');")
+    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.destroyallsoftware.com');")
+    connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.google.com');")
+
+
+    visit '/bookmarks'
     expect(page).to have_content "http://www.makersacademy.com"
+    expect(page).to have_content "http://www.destroyallsoftware.com"
+    expect(page).to have_content "http://www.google.com"
   end
 end
