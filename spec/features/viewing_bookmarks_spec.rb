@@ -8,13 +8,11 @@ end
 feature "viewing bookmars in /bookmarks route" do
   scenario "show list of bookmarks" do
 
-    create_bookmark('http://www.makersacademy.com')
-    create_bookmark('http://www.destroyallsoftware.com')
-    create_bookmark('http://www.google.com')
+    create_bookmark('http://www.makersacademy.com', 'Makers')
+    create_bookmark('http://www.destroyallsoftware.com', 'DAS')
 
     visit '/bookmarks'
-    expect(page).to have_content "http://www.makersacademy.com"
-    expect(page).to have_content "http://www.destroyallsoftware.com"
-    expect(page).to have_content "http://www.google.com"
+    expect(page).to have_content "Makers"
+    expect(page).to have_content "DAS"
   end
 end

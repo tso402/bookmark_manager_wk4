@@ -4,13 +4,12 @@ describe Bookmark do
   let(:connection) {PG.connect(dbname: 'bookmark_manager_test')}
   describe '#all' do
     it 'returns all bookmarks' do
-      create_bookmark('http://www.makersacademy.com')
-      create_bookmark('http://www.destroyallsoftware.com')
+      create_bookmark('http://www.makersacademy.com', 'Makers')
+      create_bookmark('http://www.destroyallsoftware.com', 'DAS')
 
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include("http://www.makersacademy.com")
-      expect(bookmarks).to include("http://www.destroyallsoftware.com")
+      expect(bookmarks.pop.url).to include("http://www.destroyallsoftware.com")
     end
   end
 

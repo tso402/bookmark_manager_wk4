@@ -1,11 +1,7 @@
-require 'pg'
+def add_bookmark
+    visit '/bookmarks'
+    fill_in('title', with: 'Github')
+    fill_in('url', with: 'https://github.com/')
 
-  def clear_test
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-    connection.exec("TRUNCATE bookmarks;")
- end
-
-  def create_bookmark(url)
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('#{url}');")
-  end
+    click_button 'Submit'
+end

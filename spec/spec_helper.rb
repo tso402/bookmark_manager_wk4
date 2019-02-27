@@ -6,6 +6,7 @@ require 'capybara'
 require 'features/web_helper'
 require './app.rb'
 require 'pg'
+require 'features/db_helper'
 
 ENV['RACK_ENV'] = 'test'
 

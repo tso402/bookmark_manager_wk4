@@ -1,6 +1,8 @@
+"Bookmark Manager!"
+
 <ul id='bookmark_list'>
   <% @bookmarks.each do |bookmark| %>
-    <li class='bookmark' href=<%= bookmark.url %>><%= bookmark.title %></li>
+    <li> <a class='bookmark' href='<%= bookmark.url %>'><%= bookmark.title %></a></li>
     <% end %>
 
   <div>
