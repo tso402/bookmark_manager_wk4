@@ -6,27 +6,29 @@ describe Bookmark do
     it 'returns all bookmarks' do
       create_bookmark('http://www.makersacademy.com')
       create_bookmark('http://www.destroyallsoftware.com')
-      create_bookmark('http://www.google.com')
-      
+
       bookmarks = Bookmark.all
 
       expect(bookmarks).to include("http://www.makersacademy.com")
       expect(bookmarks).to include("http://www.destroyallsoftware.com")
-      expect(bookmarks).to include("http://www.google.com")
-      end
+    end
   end
-  
+
   describe '#create' do
     it 'adds a new bookmark url to the database' do
-      url = 'https://github.com'
-      Bookmark.create(url)
-      results = []
-      connection.exec("SELECT * FROM bookmarks where url = '#{url}';") do |result|
-        result.each do |row|
-        results << row.values_at('url')[0]
-        end
+      bookmark = {
+        url: 'https://github.com',
+        title: 'Github'
+      }
+      Bookmark.create(bookmark[:url], bookmark[:title])
+
+      retrieved_bookmark = {}
+      results = connection.exec "SELECT * FROM bookmarks where url = '#{bookmark[:url]}'"
+      results.each do |row|
+        retrieved_bookmark.merge!(url: row['url'], title: row['title'])
       end
-      expect(results).to include(url)
-    end  
+
+      expect(retrieved_bookmark).to eq(bookmark)
+    end
   end
 end
