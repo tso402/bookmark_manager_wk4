@@ -6,7 +6,11 @@
       <form action='/remove' method ='post'>
         <button name='removal_link' type='submit' value='<%= bookmark.id %>'>Remove <%= bookmark.title %></button>
         <input type='hidden' name = '_method' value = 'DELETE'/>
-      </form></li>
+      </form>
+      <form action='/update' method ='post'>
+        <button name='update_link' type='submit' value='<%= bookmark.id %>'>Update <%= bookmark.title %></button>
+      </form>
+    </li>
     <% end %>
 
   <div>

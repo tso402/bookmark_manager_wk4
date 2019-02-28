@@ -21,6 +21,23 @@ class Bookmarks < Sinatra::Base
     Bookmark.remove(params[:removal_link])
     redirect ('/bookmarks')
   end
+
+  post '/update' do
+    Bookmark.read(id: params[:update_link])
+    redirect ('/bookmarks/update')
+  end
+
+  get '/bookmarks/update' do
+    @bookmark = Bookmark.read_bookmark
+    erb(:update)
+  end
+
+  patch '/bookmarks/patch' do
+    Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+    redirect ('/bookmarks')
+  end
+
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
