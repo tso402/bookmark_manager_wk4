@@ -41,6 +41,12 @@ class Bookmark
     else
       conn = PG.connect(dbname: 'bookmark_manager' )
     end
+    if title == ""
+      title = @read_bookmark.title
+    end
+    if url == ""
+      url = @read_bookmark.url
+    end
     conn.exec("UPDATE bookmarks set title = '#{title}',url = '#{url}' WHERE id = #{id.to_i}")
   end
 
