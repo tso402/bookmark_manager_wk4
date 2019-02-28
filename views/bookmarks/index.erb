@@ -2,7 +2,7 @@
 
 <ul id='bookmark_list'>
   <% @bookmarks.each do |bookmark| %>
-    <li> <a class='bookmark' href='<%= bookmark.url %>'><%= bookmark.title %></a></li>
+    <li> <a class='bookmark' href='<%= bookmark.url %>'><%= bookmark.title %></a> <form action='/remove' method ='post'> <button name='removal_link' type='submit' value='<%= bookmark.id %>'>Remove <%= bookmark.title %></button></form></li>
     <% end %>
 
   <div>

@@ -30,4 +30,25 @@ describe Bookmark do
       expect(retrieved_bookmark).to eq(bookmark)
     end
   end
+
+  describe '#delete' do
+    it 'removes a bookmark from the database' do
+  bookmark = {
+    url: 'https://github.com',
+    title: 'Github'
+  }
+  Bookmark.create(bookmark[:url], bookmark[:title])
+  retrieved_bookmark = {}
+      results = connection.exec "SELECT * FROM bookmarks where url = '#{bookmark[:url]}'"
+      results.each do |row|
+        retrieved_bookmark.merge!(id: row['id'], url: row['url'], title: row['title'])
+      end
+      p retrieved_bookmark[:id]
+    Bookmark.remove(retrieved_bookmark[:id])
+      results = connection.exec "SELECT * FROM bookmarks where id = #{retrieved_bookmark[:id].to_i}"
+      results.first
+      expect(results.first).to eq nil
+    end
 end
+end
+
