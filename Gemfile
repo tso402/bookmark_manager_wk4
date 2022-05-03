@@ -10,7 +10,7 @@ ruby '2.6.0'
 
 gem 'rake'
 gem 'selenium-webdriver', '~> 2.53', '>= 2.53.4'
-gem 'sinatra', '~> 2.0', '>=2.0.5'
+gem 'sinatra', '~> 2.2'
 gem 'pg'
 
 group :test do
